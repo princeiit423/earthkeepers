@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Care</title>
+    <link rel="stylesheet" href="styles.css">
+      <style>
+      body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: #2e7d32;
+    color: white;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-family: 'Pacifico', cursive;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul a {
+    margin-left: 20px;
+}
+
+header nav ul  a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+header nav ul a:hover {
+    color: #a5d6a7;
+}
+
+.hero {
+    background: url("/green.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    height: 90vh;
+    width:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    animation: fadeIn 2s ease-in-out;
+    color:black;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: slideIn 1s ease-in-out;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+.cta-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #66bb6a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    animation: fadeInUp 2s ease-in-out;
+}
+
+.cta-button:hover {
+    background-color: #81c784;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 10%;
+    background-color: #ffffff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.features .feature {
+    text-align: center;
+    max-width: 300px;
+}
+
+.features .feature img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.features .feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.features .feature p {
+    font-size: 1rem;
+}
+
+footer {
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+      </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Green Care</h1>
+        </div>
+        <nav>
+            <ul>
+                <a href="/">Home</a>
+                <a href="/identify">Identify Plants</a>
+                <a href="/health">Check Health</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Your Plant’s Health, Our Care</h2>
+        <p>Discover the health condition of your plants and identify them with ease.</p>
+        <a href="/identify" class="cta-button">Get Started</a>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <a href="/identify" style="text-decoration: none; color: black;">
+            <img src="https://plus.unsplash.com/premium_photo-1679438757188-9b120da82a65?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHBsYW50JTIwc2VhcmNofGVufDB8fDB8fHww" alt="Plant Identification">
+            <h3>Identify Plants</h3>
+            <p>Quickly identify plants with a single click using our advanced AI technology.</p>
+        </a>
+        </div>
+        <div class="feature">
+            <a href="/health" style="text-decoration: none; color: black;">
+            <img src="https://plus.unsplash.com/premium_photo-1677531681334-143ab030a5f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHBsYW50JTIwc2VhcmNofGVufDB8fDB8fHww" alt="Plant Health">
+            <h3>Check Plant Health</h3>
+            <p>Analyze the health of your plants and get expert advice on how to care for them.</p>
+        </a>
+        </div>
+        <div class="feature">
+            <a href="/tips" style="text-decoration: none; color: black;">
+            <img src="https://plus.unsplash.com/premium_photo-1682092034268-645322c1d308?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aW5kaWFuJTIwZmFybWVyc3xlbnwwfHwwfHx8MA%3D%3D" alt="Plant Care">
+            <h3>Plant Care Tips</h3>
+            <p>Receive personalized tips and tricks to keep your plants thriving.</p>
+        </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Green Care. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+          <script>
+          // Add any custom JavaScript for animations or interactivity here
+document.addEventListener('DOMContentLoaded', function() {
+    // Example: Smooth scroll to sections
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});
+
+          </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Health Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #27ae60;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .section {
+            margin-bottom: 30px;
+            animation: slideInUp 1.5s ease-in-out;
+        }
+        .section h2 {
+            font-size: 1.8rem;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .image:hover {
+            transform: scale(1.05);
+        }
+        .suggestion {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
+        }
+        .suggestion:hover {
+            background-color: #eafaf1;
+        }
+        .suggestion h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #27ae60;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        p {
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .btn-link {
+    text-decoration: none; /* Remove underline from <a> */
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    background-color: #1f6d9a;
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Plant Health Result</h1>
+
+        <div class="section">
+            <h2>Plant Status</h2>
+            <p><strong>Is Plant:</strong> <%= result.result.is_plant.binary ? 'Yes' : 'No' %> (Probability: <%= (result.result.is_plant.probability * 100).toFixed(2) %>%)</p>
+            <p><strong>Is Healthy:</strong> <%= result.result.is_healthy.binary ? 'Yes' : 'No' %> (Probability: <%= (result.result.is_healthy.probability * 100).toFixed(2) %>%)</p>
+        </div>
+
+        <div class="section">
+            <h2>Disease Suggestions</h2>
+            <% result.result.disease.suggestions.forEach(suggestion => { %>
+                <div class="suggestion">
+                    <h3><%= suggestion.name %> (Probability: <%= (suggestion.probability * 100).toFixed(2) %>%)</h3>
+                    <% if (suggestion.similar_images.length > 0) { %>
+                        <% suggestion.similar_images.forEach(img => { %>
+                            <img src="<%= img.url %>" alt="Similar Image" class="image">
+                        <% }) %>
+                    <% } %>
+                    <p><strong>Description:</strong> <%= suggestion.details.description %></p>
+                    <% if (suggestion.details.treatment) { %>
+                        <p><strong>Treatment:</strong></p>
+                        <% if (suggestion.details.treatment.prevention) { %>
+                            <ul>
+                                <% suggestion.details.treatment.prevention.forEach(item => { %>
+                                    <li><%= item %></li>
+                                <% }) %>
+                            </ul>
+                        <% } %>
+                        <% if (suggestion.details.treatment.biological) { %>
+                            <ul>
+                                <% suggestion.details.treatment.biological.forEach(item => { %>
+                                    <li><%= item %></li>
+                                <% }) %>
+                            </ul>
+                        <% } %>
+                        <% if (suggestion.details.treatment.chemical) { %>
+                            <ul>
+                                <% suggestion.details.treatment.chemical.forEach(item => { %>
+                                    <li><%= item %></li>
+                                <% }) %>
+                            </ul>
+                        <% } %>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+        <a class="btn-link" href="/download-health"><button class="btn">Download Result</button></a>
+    </div>
+</body>
+</html>
