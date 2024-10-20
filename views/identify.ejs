@@ -51,7 +51,7 @@ header nav ul a {
 }
 
 header nav ul a:hover {
-    color: #a5d6a7;
+    color: black;
 }
 
 /* Hero Section */
@@ -154,6 +154,22 @@ footer {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+@media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        header nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        header nav ul a {
+          margin-left: 0;
+          margin-bottom: 10px;
+        }
+    }
 
     </style>
 </head>
